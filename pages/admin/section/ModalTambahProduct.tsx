@@ -2,7 +2,7 @@ import { Box, Grid, Modal, TextField, Typography, Input, InputAdornment, IconBut
 import PhotoCamera from '@mui/icons-material/PhotoCamera';
 import { useFormik } from "formik";
 import * as yup from 'yup';
-import { storage as firebaseStorage } from "./firebaseConfig"; // Rename the import alias to avoid conflicts
+import { storage as firebaseStorage } from "../../../firebaseConfig"; // Rename the import alias to avoid conflicts
 import { ref as storageRef, uploadBytes, getDownloadURL } from "firebase/storage"; // Import the correct ref function from Firebase Storage
 import { useState, ChangeEvent } from "react";
 import axios from "axios";

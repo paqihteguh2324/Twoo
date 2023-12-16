@@ -46,9 +46,11 @@ export default function ModalTambahProduct({ open, handleClose, setAlert }: { op
                 image: e?.image,
             });
           handleClose();
+          formik.resetForm();
           setAlert({open: true, severity: "success", message: "Berhasil Tambah Product"});
         } catch (error) {
           console.error('Error:', error);
+
           // Handle error (e.g., show error message)
         }
       };
@@ -71,7 +73,6 @@ export default function ModalTambahProduct({ open, handleClose, setAlert }: { op
             // Set the image URL in formik.values
             formik.setFieldValue("image", downloadURL);
             console.log("Download URL:", downloadURL);
-            formik.resetForm();
             
             // Do something with the obtained URL, such as storing it in state or using it to display the image
           } catch (error) {
@@ -93,6 +94,9 @@ export default function ModalTambahProduct({ open, handleClose, setAlert }: { op
                 <Typography variant="h6" component="h2" sx={{ textAlign: "center", fontWeight: "700", fontSize: "30px" }}>
                     Tambah Product
                 </Typography>
+                <pre>
+                    {JSON.stringify(formik.values, null, 2)}
+                </pre>
                 <form onSubmit={formik.handleSubmit}>
                     <Grid item xs={12} sm={12} display={"flex"} justifyContent={"center"} mt={4}>
                         {formik?.values?.image && <img src={formik?.values?.image} width={"auto"} height={"240px"} />}

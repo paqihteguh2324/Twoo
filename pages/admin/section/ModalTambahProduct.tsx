@@ -94,12 +94,9 @@ export default function ModalTambahProduct({ open, handleClose, setAlert }: { op
                 <Typography variant="h6" component="h2" sx={{ textAlign: "center", fontWeight: "700", fontSize: "30px" }}>
                     Tambah Product
                 </Typography>
-                <pre>
-                    {JSON.stringify(formik.values, null, 2)}
-                </pre>
                 <form onSubmit={formik.handleSubmit}>
                     <Grid item xs={12} sm={12} display={"flex"} justifyContent={"center"} mt={4}>
-                        {formik?.values?.image && <img src={formik?.values?.image} width={"auto"} height={"240px"} />}
+                        {formik?.values?.image && <img src={formik?.values?.image} width={"90%"} height={"240px"} />}
                     </Grid>
                     <Grid item xs={12} sm={12} display={"flex"} justifyContent={"center"}>
                         <Input

@@ -13,103 +13,31 @@ import {
 import InfoIcon from "@mui/icons-material/Info";
 import { useEffect, useState } from "react";
 
-const item = [
-    {
-        "id": 25,
-        "name": "Strap phone",
-        "price": 7000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231219_153937_301.webp?alt=media&token=783b107b-2576-4fc0-8395-abf4e138ffa6"
-    },
-    {
-        "id": 26,
-        "name": "Bracelet pearl butetterfly",
-        "price": 10000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231216_152807_737.webp?alt=media&token=43065c95-31bd-42fe-9eb5-f4ac34ed8a1d"
-    },
-    {
-        "id": 27,
-        "name": "Bracelet beads shell",
-        "price": 8000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231216_152721_384.webp?alt=media&token=48bb4225-9d96-4b4b-8128-807091f3e508"
-    },
-    {
-        "id": 28,
-        "name": "Bracelet beads flower jasmine",
-        "price": 9000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231210_120916_689.webp?alt=media&token=3f1b0aab-0bc4-40d1-af3f-9862c724b6db"
-    },
-    {
-        "id": 29,
-        "name": "Bracelet beads love yellow",
-        "price": 8000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_090340_469.webp?alt=media&token=4afd2fab-ba7e-4171-8282-8c73c4ab8fb6"
-    },
-    {
-        "id": 30,
-        "name": "Bracelet love green",
-        "price": 8000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_090317_436.webp?alt=media&token=7755c770-fc93-47cd-9990-d98399b0c986"
-    },
-    {
-        "id": 32,
-        "name": "Bracelet smile",
-        "price": 10000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_085256_716.webp?alt=media&token=e32dc942-1293-47ff-86ec-a1f79f81d1c8"
-    },
-    {
-        "id": 31,
-        "name": "Bracelet flowers name",
-        "price": 7000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_085335_758.webp?alt=media&token=e01a62d4-fe02-4610-a5c8-8decf626a285"
-    },
-    {
-        "id": 33,
-        "name": "Bracelet black white",
-        "price": 8000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_085146_394.webp?alt=media&token=382688e4-c16b-4c6e-981f-6e1cab461c75"
-    },
-    {
-        "id": 34,
-        "name": "Bracelet love ",
-        "price": 6000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231201_121142_790.jpg?alt=media&token=24543737-2d0b-4731-b3a2-a9d2a3fbf92f"
-    },
-    {
-        "id": 35,
-        "name": "Ring butterfly",
-        "price": 3000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_091630_833.webp?alt=media&token=d0435864-4095-4ae5-b9d3-ac64958c335b"
-    },
-    {
-        "id": 36,
-        "name": "Ring flowers",
-        "price": 3000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_090747_504.webp?alt=media&token=23620700-558a-4a21-bd8a-7e4b016e794e"
-    },
-    {
-        "id": 37,
-        "name": "Ring love",
-        "price": 3000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_090803_191.webp?alt=media&token=3acc6619-58a9-4b77-b1b4-7168dfc67405"
-    },
-    {
-        "id": 38,
-        "name": "Ring polos",
-        "price": 2000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_085445_769.webp?alt=media&token=82294ecf-f528-497c-9337-9e84024b096e"
-    },
-    {
-        "id": 39,
-        "name": "Ring polos 2",
-        "price": 2000,
-        "image": "https://firebasestorage.googleapis.com/v0/b/twoo-359ce.appspot.com/o/images%2FIMG_20231208_085457_503.webp?alt=media&token=75bac4e4-cba6-4efe-97b2-0ccb412092ad"
-    }
-]
-
+interface Item {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+}
 
 export default function TwooGift() {
   const [open, setOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [products, setProducts] = useState<Item[]>([]);
+
+  async function fetchProducts() {
+    try {
+      const response = await fetch("/api/product");
+      if (response.ok) {
+        const data = await response.json();
+        setProducts(data);
+      } else {
+        throw new Error("Failed to fetch products");
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  }
 
   const handleImageClick = (imageSrc: string) => {
     setSelectedImage(imageSrc);
@@ -120,12 +48,16 @@ export default function TwooGift() {
     setOpen(false);
   };
 
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   return (
     <>
       <ResponsiveAppBar />
       <Box sx={{ backgroundColor: "#E0E2C8" }} mt={2}>
         <Grid container px={3} pt={9} spacing={2}>
-          {item.map((item) => (
+          {products.map((item) => (
             <Grid item md={4} xs={6} key={item?.id}>
               <ImageListItem
                 sx={{ borderRadius: "4%", boxShadow: 2, maxHeight: "250px" }}

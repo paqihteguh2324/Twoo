@@ -14,7 +14,7 @@ import { Avatar } from '@mui/material';
 
 const pages = ['Products', 'Pricing', 'Blog'];
 
-function ResponsiveAppBar({title = 'Twoo Gift'}:{title?:string}) {
+function ResponsiveAppBar({title = 'TwooGift'}:{title?:string}) {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
@@ -25,7 +25,7 @@ function ResponsiveAppBar({title = 'Twoo Gift'}:{title?:string}) {
     setAnchorElNav(null);
   };
   return (
-    <AppBar position="fixed" sx={{backgroundColor:"#FFB6C1", color:"#eee"}}>
+    <AppBar position="fixed" sx={{backgroundColor:"#dda4b5", color:"#eee"}}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <Avatar src='/static/twoo/Logo/logo.jpg' />
